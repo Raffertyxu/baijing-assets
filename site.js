@@ -18,7 +18,9 @@
 
   // 品牌正式 Logo（導覽列與頁尾共用）
   var LOGO_URL = 'https://img.1shop.tw/197aMxy84AlqgWrRPm2d3QYq/5yxD7ZmWlk1Qm6kbYXgBqvRQ/original-2.png.avif';
-  var LOGO = '<img src="' + LOGO_URL + '" alt="">';
+  function logoImg(size) {
+    return '<img src="' + LOGO_URL + '" alt="" style="display:block;width:' + size + 'px;height:' + size + 'px;object-fit:contain;max-width:none;">';
+  }
 
   function isActive(href) {
     var path = location.pathname.replace(/\/+$/, '') || '/';
@@ -43,7 +45,7 @@
     nav.innerHTML =
       '<div class="bj-nav__inner">' +
         '<a class="bj-nav__brand" href="/" aria-label="' + BRAND + ' 首頁">' +
-          '<span style="color:var(--bj-spark)">' + LOGO + '</span>' +
+          '<span style="color:var(--bj-spark)">' + logoImg(34) + '</span>' +
           '<span class="bj-nav__brand-name">' + BRAND + '</span>' +
         '</a>' +
         '<nav class="bj-nav__links">' + linksHtml +
@@ -66,7 +68,7 @@
       '<div class="bj-footer__inner">' +
         '<div class="bj-footer__brand">' +
           '<div class="bj-footer__brand-top">' +
-            '<span style="color:var(--bj-spark)">' + LOGO + '</span>' +
+            '<span style="color:var(--bj-spark)">' + logoImg(44) + '</span>' +
             '<span class="bj-footer__name">' + BRAND + '</span>' +
           '</div>' +
           '<p class="bj-footer__tagline">極致的淨,看不見的細節。<br>專業裝潢後細部清潔 · 石材美容 · 玻璃無水痕清潔</p>' +
