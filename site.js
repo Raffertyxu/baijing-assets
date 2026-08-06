@@ -148,7 +148,18 @@
     });
   }
 
+  function removeNativeChat() {
+    Array.prototype.forEach.call(document.querySelectorAll('body.InWeb > .chat'), function (el) {
+      if (el.parentNode) el.parentNode.removeChild(el);
+    });
+  }
+
   function start() {
+    removeNativeChat();
+
+    var nativeChatObs = new MutationObserver(removeNativeChat);
+    nativeChatObs.observe(document.body, { childList: true });
+    setTimeout(function () { nativeChatObs.disconnect(); }, 10000);
     var app = document.querySelector('.BJ-Base-App');
     if (app) { inject(app); applyConf(); return; }
     // 若頁面區塊是稍後才載入,觀察 DOM 直到出現
